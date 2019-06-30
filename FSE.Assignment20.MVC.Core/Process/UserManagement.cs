@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FSE.Assignment20.MVC.Core
 {
-    class UserManagement
+    public class UserManagement
     {
         private TwitterConnector _connector;
 

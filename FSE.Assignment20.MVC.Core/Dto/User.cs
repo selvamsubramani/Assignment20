@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FSE.Assignment20.MVC.Core
 {
-    class User
+    public class User
     {
         public string Username { get; set; }
 

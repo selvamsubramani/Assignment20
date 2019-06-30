@@ -17,8 +17,17 @@ namespace FSE.Assignment20.MVC.TwitterClone.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection collection)
         {
+            var login = new Login
+            {
+                Username = collection["Username"],
+                Password = collection["Password"]
+            };
+            if (new UserManagement().ValidateUser(login))
+            {
+                return RedirectToAction("Index");
+            }
             ModelState.AddModelError(string.Empty, "Login failed. Please provide valid username & password");
-            return View("Index", new Login());
+            return View("Index", login);
         }
     }
 }
