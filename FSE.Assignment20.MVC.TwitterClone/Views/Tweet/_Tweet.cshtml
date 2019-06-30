@@ -1,0 +1,29 @@
+﻿@model FSE.Assignment20.MVC.Core.Tweet
+
+<div class="container">
+    <h2></h2>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">@Model.FullName</h3>
+            <h5 class="panel-title pull-right">@Model.Created.ToString("dd-MMM-yyyy hh:mm")</h5>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("Edit", "Tweet", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.FullName)
+                @Html.HiddenFor(model => model.UserName)
+                @Html.HiddenFor(model => model.TweetId)
+                @Html.HiddenFor(model => model.Created)
+
+                <article>
+                    @Model.Message
+                </article>
+                <div class="form-group form-inline pull-right">
+                    <input type="submit" name="submit" value="Edit" class="btn btn-info btn-xs" />
+                    <input type="submit" name="submit" value="Delete" class=" btn btn-danger btn-xs" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

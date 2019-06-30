@@ -46,5 +46,48 @@ namespace FSE.Assignment20.MVC.DataAccess
             person.Following.Add(follow);
             _model.SaveChanges();
         }
+
+        public void AddTweet(string userId, string message)
+        {
+            _model.Tweets.Add(
+                new Tweet
+                {
+                    UserId = userId,
+                    Message = message,
+                    Created = DateTime.Now
+                });
+            _model.SaveChanges();
+        }
+
+        public IQueryable<Tweet> GetTweets(string userId)
+        {
+            return _model.Tweets.Where(x => x.UserId == userId);
+        }
+
+        public Tweet GetTweet(int id)
+        {
+            return _model.Tweets.FirstOrDefault(x => x.TweetId == id);
+        }
+
+        public void UpdateTweet(int id, string message)
+        {
+            var tweet = GetTweet(id);
+            if (tweet != null)
+            {
+                tweet.Message = message;
+                _model.SaveChanges();
+            }
+        }
+
+        public void DeleteTweet(int id)
+        {
+            var tweet = GetTweet(id);
+            if (tweet != null)
+            {
+                _model.Tweets.Remove(tweet);
+                _model.SaveChanges();
+            }
+        }
+
     }
 }

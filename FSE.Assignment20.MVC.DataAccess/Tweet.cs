@@ -9,6 +9,7 @@ namespace FSE.Assignment20.MVC.DataAccess
     [Table("Tweet")]
     public partial class Tweet
     {
+        [Key]
         public int TweetId { get; set; }
 
         [Required]

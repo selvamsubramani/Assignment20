@@ -35,7 +35,9 @@ namespace FSE.Assignment20.MVC.Core
                     UserId = user.Username,
                     Password = user.Password.EncryptedPassword(),
                     FullName = user.FullName,
-                    Email = user.Email
+                    Email = user.Email,
+                    Active = true,
+                    Joined = DateTime.Now
                 });
         }
 
