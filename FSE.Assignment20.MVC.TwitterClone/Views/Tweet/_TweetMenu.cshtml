@@ -1,0 +1,26 @@
+﻿@model FSE.Assignment20.MVC.Core.User
+
+
+<div class="navbar navbar-default navbar-fixed-top">
+    @Html.HiddenFor(m => m.Username)
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Twitter Clone", "Index", "Tweet", null, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                <li class="nav navbar-text navbar-inverse">Welcome @Model.FullName </li>
+                <li>@Html.ActionLink("Home", "Index", "Tweet")</li>
+                <li class="nav navbar-text">|</li>
+                <li>@Html.ActionLink("Profile", "UpdateProfile", "Tweet", new { id = Model.Username }, null)</li>
+                <li class="nav navbar-text">|</li>
+                <li>@Html.ActionLink("Logout", "Index", "Login")</li>
+            </ul>
+        </div>
+    </div>
+</div>

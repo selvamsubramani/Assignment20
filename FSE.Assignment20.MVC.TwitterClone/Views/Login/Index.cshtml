@@ -15,14 +15,14 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group form-inline">
-                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-1" })
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.Username,
                         new { htmlAttributes = new { @class = "form-control", @placeholder = "Username", @required = "required" } })
                         @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group form-inline">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-1" })
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
                         @Html.PasswordFor(model => model.Password,
                         new { @class = "form-control", @placeholder = "Password", @required = "required" })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
@@ -33,7 +33,7 @@
                     </div>
 
                     <div>
-                        <label class="control-label col-md-1">New User?</label>
+                        <label class="control-label">New User?</label>
                         @Html.ActionLink("Sign Up", "Index", "Signup", null, new { @class = "btn btn-toolbar" })
                     </div>
                 }

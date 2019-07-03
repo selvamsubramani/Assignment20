@@ -1,9 +1,6 @@
 ﻿using FSE.Assignment20.MVC.DataAccess;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FSE.Assignment20.MVC.Core
 {
@@ -35,7 +32,7 @@ namespace FSE.Assignment20.MVC.Core
 
                 result.Following = GetUsers(person.Following).ToList();
 
-                result.Tweets.AddRange(GetTweetByUserId(userId));
+                result.Tweets.AddRange(GetTweetByUserId(userId, true));
                 result.Following.ForEach(x =>
                 {
                     result.Tweets.AddRange(GetTweetByUserId(x.Username));
@@ -66,7 +63,7 @@ namespace FSE.Assignment20.MVC.Core
             return new Tweet();
         }
 
-        private IEnumerable<Tweet> GetTweetByUserId(string userId)
+        private IEnumerable<Tweet> GetTweetByUserId(string userId, bool isAllowed = false)
         {
             return
             _connector.GetTweets(userId).Select(x => new Tweet
@@ -76,14 +73,15 @@ namespace FSE.Assignment20.MVC.Core
                 Created = x.Created,
                 UserName = x.UserId,
                 FullName = x.Person.FullName,
-                IsAllowed = x.UserId == userId
+                IsAllowed = isAllowed
             });
         }
 
         private IEnumerable<User> GetUsers(ICollection<Person> persons)
         {
             return
-                persons.Select(x => new User
+                persons.Where(x => x.Active)
+                .Select(x => new User
                 {
                     Username = x.UserId,
                     Email = x.Email,

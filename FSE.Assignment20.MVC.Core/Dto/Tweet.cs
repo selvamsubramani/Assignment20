@@ -13,6 +13,7 @@ namespace FSE.Assignment20.MVC.Core
         public List<User> Following { get; set; }
         public List<Tweet> Tweets { get; set; }
         public Tweet CurrentTweet { get; set; }
+        public List<Follow> UserListToFollow { get; set; }
         public UserTweet()
         {
             User = new User();

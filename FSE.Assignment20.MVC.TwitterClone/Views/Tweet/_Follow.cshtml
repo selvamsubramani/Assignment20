@@ -1,0 +1,22 @@
+﻿@model FSE.Assignment20.MVC.Core.Follow
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @Model.Username
+    </div>
+    <div class=" panel-body">
+        @using (Html.BeginForm("Follow", "Tweet", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.Username)
+            <span class="badge">@Model.Fullname</span>
+            if (Model.ActionName == "Follow")
+            {
+                <input type="submit" name=@Model.ActionName value=@Model.ActionName class="btn-xs btn-success" />
+            }
+            else
+            {
+                <input type="submit" name=@Model.ActionName value=@Model.ActionName class="btn-xs btn-danger" />
+            }
+        }
+    </div>
+</div>

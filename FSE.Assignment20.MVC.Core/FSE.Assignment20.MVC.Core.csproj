@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\Follow.cs" />
     <Compile Include="Dto\Tweet.cs" />
     <Compile Include="Process\TweetManagement.cs" />
     <Compile Include="Extension.cs" />

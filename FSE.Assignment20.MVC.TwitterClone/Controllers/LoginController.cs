@@ -18,10 +18,13 @@ namespace FSE.Assignment20.MVC.TwitterClone.Controllers
                 Username = collection["Username"],
                 Password = collection["Password"]
             };
+            TempData.Clear();
             if (new UserManagement().ValidateUser(login))
             {
-                return RedirectToAction("Index", "Tweet", new { id = login.Username });
+                Session["UserId"] = login.Username;
+                return RedirectToAction("Index", "Tweet");
             }
+
             ModelState.AddModelError(string.Empty, "Login failed. Please provide valid username & password");
             return View("Index", login);
         }

@@ -16,17 +16,56 @@ textarea {
     max-width: 280px;
 }
 
-.center-block{
+.center-block {
     display: block;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.width-500{
-    width:500px;
+.width-500 {
+    width: 500px;
 }
 
-.ml-75{
-    margin-left:75%;
+.ml-75 {
+    margin-left: 75%;
 }
 
+.badge-error {
+    background-color: #b94a48;
+}
+
+    .badge-error:hover {
+        background-color: #953b39;
+    }
+
+.badge-warning {
+    background-color: #f89406;
+}
+
+    .badge-warning:hover {
+        background-color: #c67605;
+    }
+
+.badge-success {
+    background-color: #468847;
+}
+
+    .badge-success:hover {
+        background-color: #356635;
+    }
+
+.badge-info {
+    background-color: #3a87ad;
+}
+
+    .badge-info:hover {
+        background-color: #2d6987;
+    }
+
+.badge-inverse {
+    background-color: #333333;
+}
+
+    .badge-inverse:hover {
+        background-color: #1a1a1a;
+    }

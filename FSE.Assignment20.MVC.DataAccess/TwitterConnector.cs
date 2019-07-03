@@ -47,6 +47,12 @@ namespace FSE.Assignment20.MVC.DataAccess
             _model.SaveChanges();
         }
 
+        public void RemoveFollower(Person person, Person follow)
+        {
+            person.Following.Remove(follow);
+            _model.SaveChanges();
+        }
+
         public void AddTweet(string userId, string message)
         {
             _model.Tweets.Add(
@@ -87,6 +93,11 @@ namespace FSE.Assignment20.MVC.DataAccess
                 _model.Tweets.Remove(tweet);
                 _model.SaveChanges();
             }
+        }
+
+        public IQueryable<Person> SearchFollowers(string name)
+        {
+            return _model.People.Where(x => x.UserId.Contains(name) && x.Active);
         }
 
     }

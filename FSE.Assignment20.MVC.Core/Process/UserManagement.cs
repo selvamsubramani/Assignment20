@@ -45,5 +45,58 @@ namespace FSE.Assignment20.MVC.Core
         {
             _connector.DeactivatePerson(username);
         }
+
+        public User GetUser(string userId)
+        {
+            var person = _connector.GetPerson(userId);
+            if (person != null)
+            {
+                return
+                    new User
+                    {
+                        Username = person.UserId,
+                        FirstName = person.FullName,
+                        Email = person.Email,
+                        Password = person.Password
+                    };
+            }
+            return new User { };
+        }
+
+        public List<Follow> SearchUserToFollow(string userId, string name)
+        {
+            var followers = _connector.SearchFollowers(name);
+            if (followers.Any(x => x.UserId != userId))
+            {
+                return followers.Where(x => x.UserId != userId)
+                    .Select(x => new Follow
+                    {
+                        Username = x.UserId,
+                        Fullname = x.FullName,
+                        ActionName = x.Followers.Any(y => y.UserId == userId) ? "UnFollow" : "Follow"
+                    }).ToList();
+            }
+            return null;
+        }
+
+        public void FollowUser(string userId, string followingId)
+        {
+            var currentUser = _connector.GetPerson(userId);
+            var followingUser = _connector.GetPerson(followingId);
+            if (currentUser != null && followingId != null)
+            {
+                _connector.AddFollower(currentUser, followingUser);
+            }
+        }
+
+        public void UnFollowUser(string userId, string followingId)
+        {
+            var currentUser = _connector.GetPerson(userId);
+            var followingUser = _connector.GetPerson(followingId);
+            if (currentUser != null && followingId != null)
+            {
+                _connector.RemoveFollower(currentUser, followingUser);
+            }
+        }
     }
 }
